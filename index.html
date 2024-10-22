@@ -3,8 +3,10 @@
 
 <head>
     <title>Apex Internship</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="apex.css">
-    <script src="apex.js"></script>
+    <script src="form.js"></script>
 </head>
 
 <body>
@@ -16,6 +18,26 @@
     </nav>
 
     <h1>Welcome to Web Devlopment</h1>
+
+    <div id="hero">
+
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="./hero/wallpaper1.jpeg" alt="Image 1" style="display: block;">
+            <img src="./hero/wallpaper2.jpeg" alt="Image 2" style="display: none;">
+            <img src="./hero/wp3.jpeg" alt="Image 3" style="display: none;">
+            <!-- <img src="image4.jpg" alt="Image 4"> -->
+        </div>
+        <button class="prev" onclick="prevSlide()">&#10094;</button>
+        <button class="next" >&#10095;</button>
+    </div>
+
+    <div class="api">
+        <div id="jokeBox" ></div>
+        <button id="jokeBtn">More Jokes</button>
+    </div>
+</div>
+
     <div id="box1">
         <img src="apex.png" alt="apeximage">
         <div id="pnb">
@@ -43,10 +65,13 @@
     <footer>
         <a href="https://apexplanet.in">Click here to go to Apex Planet site</a><br>
         <a href="form.html">Click here to fill the form</a>
+        <a href="gallery.html">View your Gallery</a>
         
     </footer>
 </div> 
 
+<script src="carousal.js" ></script>
+<script src="api.js" ></script>
 </body>
 
 </html>

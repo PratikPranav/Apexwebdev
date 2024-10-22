@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 h1{
     background-color: aqua;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -28,30 +32,6 @@ p{
     width: 100px;
 }
 
-form{
-    border: 1px solid black;
-    padding: 2px;
-    display: inline-block;
-    background-color: aqua;
-}
-form .fields{
-    margin: 5px;
-}
-form .fields:hover{
-    border: 1px dashed rgb(187, 187, 0);
-}
-form .fields:active{
-    border: 4px solid rgb(64, 64, 2);
-}
-form #submit{
-    margin-left: 30%;
-    margin-right: 55%;
-    margin-bottom: 2px;
-}
-#submit:hover{
-    background-color: rgb(190, 190, 236);
-    transform: scale(1.1);
-}
 
 
 nav{
@@ -92,10 +72,10 @@ footer a{
     color: white;
 }
 
-
-@media(max-width:600px){
+/* 
+@media(min-width:401px)and(max-width:600px){
     #grid-box{
-        width: 90%;
+        width: 85%;
       }
       nav a{
         padding: 10px;
@@ -108,11 +88,11 @@ footer a{
     }
     #box1 img{
         
-        width: 70%;
+        width: 50%;
     }
 
 }
-@media(max-width:300px){
+@media(max-width:400px){
     #grid-box{
       width: 85%;
     }
@@ -130,47 +110,226 @@ footer a{
         width: 50%;
     }
 
-}
+} */
 
-#gallery{
+
+
+#hero{
     border: 2px solid black;
-    width: 100%;
-    height: 100%;
+    width:96vw;
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
-    padding: 30px;
 }
-.imagePreview{
-    max-width: 280px; 
-    /* display: block;  */
-    border: 2px solid black;
+
+
+
+/* #hero img{
     object-fit: cover;
+    width: 100%;
+    height: auto;
 }
-.imageInput{
-    display: none;
-}
-#gallery label{
-    margin-left: 100px;
+.prev .next{
     border: 2px solid black;
-    padding: 5px;
-    border-radius: 20%;
-    background-color: rgb(245, 168, 61);
+    left: 10px;
+    position: absolute;
+    z-index: 10;
+} */
 
+.carousel {
+    border: 3px solid black;
+    position: relative;
+    /* max-width: 50%; */
+    width: 49%;
+    /* margin: 100px auto; */
+    
 }
-#gallery label:hover{
-    opacity: 0.7;
+.carousel-images {
+    /* border: 1px solid black; */
+    display: flex;
+    overflow: hidden;
+    /* transition: transform 0.5s ease-in-out; */
+}
+.carousel-images img {
+    width: 100%;
+    border-radius: 10px;
+    padding: 2px;
+}
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    /* transform: translateY(-50%);  */
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
     cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
 }
-.removeButton{
-    margin-left: 80px;
-    border: 2px solid black;
-    padding: 5px;
-    border-radius: 20%;
-    background-color: rgb(169, 169, 162);
-
-}
-.removeButton:hover{
-    opacity: 0.7;
-    cursor: pointer;
+.prev {
+    left: 10px;
 }
 
+.next {
+    right: 10px;
+}
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.api{
+    border: 3px solid black;
+    width: 49%;
+}
+#jokeBox{
+    border: 3px solid black;
+    margin: 20px;
+    width: 90%;
+    height: 200px;
+    padding: 20px;
+    overflow: auto;
+}
+#jokeBtn{
+    margin-left: 45%;
+    margin-right: 45%;
+}
+
+
+
+/* Media Queries for Different Screen Sizes */
+
+/* Large tablets (width 768px - 1024px) */
+@media (max-width: 1024px) {
+    img {
+        width: 60%;
+        height: auto;
+    }
+
+    nav a {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    #pnb p {
+        font-size: 18px;
+    }
+}
+
+/* Small tablets and large phones (width 600px - 767px) */
+@media (max-width: 767px) {
+    #grid-box {
+        width: 100%;
+    }
+
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav a {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    #hero{
+        flex-direction: column;
+        align-items: center;   
+        width: 100%;   
+         
+    }
+
+    .carousel, .api{
+        margin: 0;
+        width: 100%;
+        flex-grow: 2;
+    }
+
+    #box1 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    img {
+        width: 70%;
+        height: auto;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    #pnb p {
+        font-size: 16px;
+    }
+}
+
+/* Small devices (width 400px - 600px) */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav a {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .carousel, .api{
+        margin: 0;
+        width: 100%;
+    }
+
+    img {
+        width: 80%;
+        height: auto;
+    }
+
+    #pnb p {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Very small devices (width < 400px) */
+@media (max-width: 400px) {
+    /* #grid-box {
+        width: 90%;
+    } */
+
+    nav a {
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    img {
+        width: 90%;
+    }
+
+    #pnb p {
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+/* always use media queries at last so that all the css props are applied correctly to all the elements. */

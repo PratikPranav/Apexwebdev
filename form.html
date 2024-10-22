@@ -1,18 +1,53 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>html form for apex</title>
-        <link rel="stylesheet" href="apex.css">
-    </head>
-    <body>
-        <form id="myForm">
-            <label for="name"><input type="text" id="name" class="fields"   placeholder="Enter Your Full Name"></label><br>
-            <label for="contact"><input type="tel" id="contact" class="fields" placeholder="Your Contact Number"></label><br>
-            <label for="email"><input type="email" id="email" class="fields" placeholder="Enter Your E-mail"></label><br>
-            <label for="msg"><textarea id="msg" class="fields" placeholder="Enter Your Message"></textarea></label><br>
-                <input type="submit" id="submit" value="Submit">
-        </form>
 
-        <script src="apex.js"></script>
-    </body>
+<head>
+    <title>html form for apex</title>
+    <!-- <link rel="stylesheet" href="apex.css"> -->
+    <style>
+        form {
+            border: 1px solid black;
+            padding: 2px;
+            display: inline-block;
+            background-color: aqua;
+        }
+
+        form .fields {
+            margin: 5px;
+        }
+
+        form .fields:hover {
+            border: 1px dashed rgb(187, 187, 0);
+        }
+
+        form .fields:active {
+            border: 4px solid rgb(64, 64, 2);
+        }
+
+        form #submit {
+            margin-left: 30%;
+            margin-right: 55%;
+            margin-bottom: 2px;
+        }
+
+        #submit:hover {
+            background-color: rgb(190, 190, 236);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <form id="myForm">
+        <label for="name"><input type="text" id="name" class="fields" placeholder="Enter Your Full Name"></label><br>
+        <label for="contact"><input type="tel" id="contact" class="fields"
+                placeholder="Your Contact Number"></label><br>
+        <label for="email"><input type="email" id="email" class="fields" placeholder="Enter Your E-mail"></label><br>
+        <label for="msg"><textarea id="msg" class="fields" placeholder="Enter Your Message"></textarea></label><br>
+        <input type="submit" id="submit" value="Submit">
+    </form>
+
+    <script src="form.js"></script>
+</body>
+
 </html>
