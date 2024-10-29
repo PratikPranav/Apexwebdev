@@ -1,0 +1,129 @@
+
+
+
+html{
+    scroll-behavior: smooth;
+}
+
+
+hr{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+
+nav{
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.215);
+}
+nav a{
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 4px;
+    border-radius: 10px;
+}
+nav a:hover{
+    background-color: aliceblue;
+    border: 2px solid black;
+}
+
+
+#about{
+    margin-bottom: 50px;
+}
+#about img{
+    height: 200px;
+    border: 0.5px solid black;
+    border-radius: 10px;
+}
+#aboutBox{
+    display: flex;
+}
+#aboutBox p{
+    margin: 10px;
+    margin-left: 30px;
+    font-size: larger;
+}
+
+
+#projects{
+    margin-bottom: 50px ;
+}
+#projectBox{
+    display: flex;
+    justify-content: space-between;
+    overflow-x: auto;
+    gap:5px;
+    padding: 10px;
+}
+#projectBox div{
+  border: 2px solid black;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: aliceblue;
+  min-width: 100px;
+  /* flex-shrink: 0; */
+}
+#projectBox div:hover{
+    transform: scale(1.2);
+}
+
+
+
+#contactBox{
+    display: flex;
+    /* align-items: flex-start; */
+    gap: 30px;
+}
+#contactBox p{
+    display: block;
+}
+
+
+footer{
+    border: 2px solid black;
+    border-radius: 10px;
+    /* border-spacing: 10px; -> only used for cells in table
+    so if you want to add space between your elements and border simply do padding😁 */
+
+    /* padding: 2px;  but here this will also not work because the space will be applied around the contents ie p tags and the border of the footer */
+
+    /* so if you want seperate space around the footer border , simply add the footer in another div and then add border and padding to the outer div. your work will be done.👍 */
+
+    border-color: rgb(3, 133, 247);
+    background-color: rgb(30, 2, 2);
+    color: white;
+    margin-top: 50px;
+    bottom: 0;
+    width: 100%;
+}
+footer p{
+    text-align: center;
+}
+
+
+
+@media(max-width:600px){
+    #contactBox{
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
+@media(max-width: 400px){
+    #aboutBox{
+        display: flex;
+        flex-direction: column;
+    }
+    #aboutBox img{
+        width: 200px;
+        margin-left: 30px;
+    }
+    #map iframe{
+        width: 250px;
+    }
+}

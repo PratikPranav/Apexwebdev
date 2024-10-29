@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Products</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            h2{
+                text-decoration: underline;  
+            }
+            #productpage{
+                border: 2px solid black;
+                display: flex;
+                padding: 5px;
+                gap: 5px;
+            }
+            aside{
+                border: 2px solid black;
+                flex: 1;
+                padding: 5px;
+            }
+            main{
+                flex: 4;
+                border: 2px solid black;
+                padding: 5px;
+                display: flex;
+                /* gap: 10px; */
+                justify-content: space-between;
+                flex-wrap: wrap;
+                flex-basis: 33%;
+            }
+            .productBox{
+                border: 2px solid black;
+                padding: 5px;
+                max-width: 300px;
+                max-height: 300px;
+                margin-bottom: 10px;
+            }
+            .productBox img{
+                width: 100%;
+                height: 65%;
+                object-fit: cover;
+                margin-bottom: 10px;
+            }
+            .productBox p{
+               margin: 5px;
+            }
+            @media(max-width:400px){
+                #productpage{
+                    display: flex;
+                    flex-direction: column;
+                }
+                aside{
+                    display: flex;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Your Favourite Products</h2>
+        <div id="productpage">
+        <aside>
+            <h3>Filter</h3>
+            <div class="filter">
+                <h4>Categories</h4>
+            <label><input type="checkbox" id="men">Men</label><br>
+            <label><input type="checkbox" id="women">Women</label><br>
+            <label><input type="checkbox" id="child">Child</label><br>
+            <label id="all"><input type="checkbox" id="all" checked disabled>All</label>
+        </div>
+
+        <div class="sort">
+            <h4>SortBy</h4>
+            <label><input type="radio" id="h2lr"  name="sort">High to Low rating</label><br>
+            <label><input type="radio" name="sort" id="l2hr">Low to High rating</label><br>
+            <label><input type="radio" name="sort" id="normal" checked>Normal</label>
+        </div>
+        </aside>
+        <main>
+
+            <div class="productBox men">
+                <img src="./hero/images/mens-pant.jpeg" >
+                <p>Men's Pant</p>
+                <p>Price: ₹<span>149</span></p>
+                <p>Rating: <span class="rating">4.5</span>⭐</p>
+            </div>
+
+            <div class="productBox men">
+                <img src="./hero/images/mens-shirt.jpeg" >
+                <p>Men's Shirt</p>
+                <p>Price: ₹<span>199</span></p>
+                <p>Rating: <span class="rating">5</span>⭐</p>
+            </div>
+
+            <div class="productBox child">
+                <img src="./hero/images/child-shirt.jpeg" >
+                <p>Child's Shirt</p>
+                <p>Price: ₹<span>99</span></p>
+                <p>Rating: <span class="rating">3</span>⭐</p>
+            </div>
+
+            <div class="productBox women">
+                <img src="./hero/images/womens-tshirt.jpeg" >
+                <p>Women's T-shirt</p>
+                <p>Price: ₹<span>199</span></p>
+                <p>Rating: <span class="rating">4</span>⭐</p>
+            </div>
+           
+            <div class="productBox ">
+                <img src="./hero/images/cap.jpeg" >
+                <p>Cap</p>
+                <p>Price: ₹<span>49</span></p>
+                <p>Rating: <span class="rating">2</span>⭐</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+//in js when you specify any value at starting( outside fn )it will execute only 1 time, so always put the value inside a fn which you want to execute acc. to fn, or many times .
+
+// -------------------------------FILTER--------------------------------
+
+    //   let checkbox = document.querySelectorAll('input[type=checkbox]');
+      let productbox = Array.from(document.querySelectorAll('.productBox'));
+
+      let mencheckbox = document.querySelector('#men');
+      let womencheckbox = document.querySelector('#women');
+      let childcheckbox = document.querySelector('#child');
+      let allcheckbox = document.querySelector('#all');
+     
+
+    function displayfn(){
+        productbox.forEach(box=>{
+            box.style.display = 'none';
+        if( 
+            (mencheckbox.checked && box.classList.contains('men')) 
+            || (womencheckbox.checked && box.classList.contains('women'))
+        || (childcheckbox.checked && box.classList.contains('child'))
+    ){
+        allcheckbox.style.display = 'none';
+            box.style.display = 'block';
+        }
+//we have used or bcz if any 1,2 or all are clicked then show, if we had used and so strictly only 1 or strictly only 2 to be clicked and so on... it would be long and confusing code. So we used or. 
+//actually here both and and or works correctly but or is more accurate.
+
+        else if(!mencheckbox.checked && !womencheckbox.checked && !childcheckbox.checked){
+            allcheckbox.style.display = 'block';
+            box.style.display = 'block';
+        }
+// after if then enters to else block, so if any 1 is clicked that cat would display and not all, so thats why we have not used or. And used and , so only if all are not cheked then only display all products.
+      })
+    }
+      
+    
+      mencheckbox.onclick = displayfn;
+      womencheckbox.onclick = displayfn;
+      childcheckbox.onclick = displayfn;
+
+
+    //   mencheckbox.onclick = function(){
+    //     productbox.forEach(box=>{
+    //        box.style.display = 'none';
+    //        if(mencheckbox.checked && box.classList.contains('men')){
+    //         box.style.display = 'block';
+    //        }
+    //        else
+    //        if(!mencheckbox.checked){
+    //         box.style.display = 'block';
+    //        }
+    //     });
+    //     };
+ 
+// ---------------SORTING---------------------------
+
+let productContainer = document.querySelector('main');
+const normalRadio = document.querySelector('#normal');
+const highRatingRadio = document.querySelector('#h2lr');
+const lowRatingRadio = document.querySelector('#l2hr');
+
+//let ratingno = document.querySelectorAll('.rating');
+
+
+function sortProducts(order) {
+    const sortedProducts = productbox.slice().sort((a, b) => {
+        const ratingA = parseFloat(a.querySelector('.rating').textContent);
+        const ratingB = parseFloat(b.querySelector('.rating').textContent);
+        return order === 'highToLow' ? ratingB - ratingA : ratingA - ratingB;
+    });
+
+    // Clear main container and append sorted products
+    productContainer.innerHTML = '';
+    sortedProducts.forEach(product => productContainer.appendChild(product));
+}
+
+
+// Event listeners for sorting options
+normalRadio.onclick = () => {
+    productContainer.innerHTML = '';
+    productbox.forEach(box => productContainer.appendChild(box)); // Display in original order
+};
+
+highRatingRadio.onclick = () => sortProducts('highToLow');
+lowRatingRadio.onclick = () => sortProducts('lowToHigh');
+
+// Set default to normal order on page load
+normalRadio.click();
+
+
+    </script>
+    </body>
+</html>

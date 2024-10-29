@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Note Making App</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            #noteBox{
+               border: 2px solid black;
+               padding: 10px;
+               float: left;
+            }
+            button{
+                
+                margin: 5px 10px;
+            }
+            button:hover{
+                cursor: pointer;
+                border:1px solid black;
+            }
+
+            @media(max-width:600px){
+                #noteBox{
+                    width: 90%;
+                }
+                #noteBox textarea{
+                    width: 99%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Note Making App</h1>
+        <h2>Create your notes and save them to your device</h2>
+        <div id="noteBox">
+            <textarea placeholder="Enter your note" rows="15" cols="60"></textarea>
+            <br>
+            <button id="save" >Save</button>
+            <button id="retrieve" >Retrieve your saved notes</button>
+            <button id="delete" >Delete your saved notes</button>
+        </div>
+
+        <script>
+            const textarea = document.querySelector('textarea');
+            document.querySelector('#save').onclick = function(){
+                const noteText = textarea.value; // Get the current value of the textarea
+                if(noteText.trim()){ // Save only if note is not empty
+                localStorage.setItem('savedNote',noteText);       alert("Your note saved successfully !");
+                textarea.value = ""; // Clear textarea after saving
+                }
+                else{
+                    alert("Please enter something to save.");
+                }
+            };
+
+            document.querySelector('#retrieve').onclick = function(){
+                const savedNote = localStorage.getItem('savedNote');
+                if(savedNote){
+                textarea.value = savedNote;
+                }
+                else{
+                    alert("No saved note found");
+                }
+            }
+
+            document.querySelector('#delete').onclick = function(){
+               const cnfmsg = "Are you sure to permanently delete your note from local storage?";
+               if(confirm(cnfmsg)){
+                localStorage.removeItem('savedNote');
+                textarea.value = "";
+               }
+            };
+
+            
+        </script>
+    </body>
+</html>
